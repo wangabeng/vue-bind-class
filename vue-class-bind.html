@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+.active{
+	color:red;
+	
+}
+</style>
+</head>
+<script src='https://unpkg.com/vue@2.2.6/dist/vue.js'></script>
+<script>
+window.onload=function(){
+	new Vue({
+		el:'#box',
+		data:{
+			show:'',
+			classArr:[
+				'showA','showB','showC'
+			]
+		},
+		methods:{
+			change(str){
+				this.show=str;	
+				return this.show;
+			}
+		},
+		mounted:function(){
+			this.show=this.classArr[0];
+			return this.show;
+		}
+	});
+};
+</script>
+<body>
+
+<div id='box'>
+	<a href='#' v-for='(value,index) in classArr' :class='{active:show==value}' @click='change(value)'>{{value}}<br></a>
+
+	<!-- <a href='#' :class='{active:show=="showA"}' @click='change("showA")'>A<br></a>
+	<a href='#' :class='{active:show=="showB"}' @click='change("showB")'>B<br></a>
+	<a href='#' :class='{active:show=="showC"}' @click='change("showC")'>C<br></a> -->
+</div>
+
+</body>
+</html>
